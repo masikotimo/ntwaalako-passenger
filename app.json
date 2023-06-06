@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Ntwaalako-passenger",
-    "description": "Ntwaalako-passenger",
-    "slug": "Ntwaalako-passenger",
+    "name": "HitchnRide-passenger",
+    "description": "HitchnRide-passenger",
+    "slug": "HitchnRide-passenger",
     "privacy": "unlisted",
     "platforms": [
       "ios",

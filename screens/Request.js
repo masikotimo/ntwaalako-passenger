@@ -4,23 +4,22 @@
 /* eslint-disable no-return-assign */
 import React from 'react';
 import {
-  Text,
   View,
-  TouchableHighlight,
   StyleSheet,
   Alert,
   ScrollView,
   BackHandler,
   TextInput,
-  Button,
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import { baseUrl } from '../utils/host';
-import VehicleDropdownList from '../components/VehicleDropdownList';
 import DriverDropdownList from '../components/DriverDropdownList';
 import { Datepicker } from '../components/Datepicker';
+import { Block, Button, Input, NavBar, Text } from "galio-framework";
+import theme from "../constants/NewTheme";
+
 
 import axios from 'axios';
 
@@ -38,8 +37,8 @@ const validationSchema = yup.object().shape({
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
+    height:"100%",
     backgroundColor: '#ffffff',
   },
   buttonText: {
@@ -62,6 +61,8 @@ const styles = StyleSheet.create({
     borderColor: '#4e4e4e',
     padding: 12,
     marginBottom: 5,
+    borderRadius:"30%",
+    marginTop:20
   },
 });
 
@@ -84,7 +85,6 @@ export class Request extends React.Component {
   async componentDidMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     this.getDrivers();
-    this.getVehicles();
   }
 
   handleBackPress = () => {
@@ -116,7 +116,7 @@ export class Request extends React.Component {
 
     const availableDrivers = [];
     axios
-      .get(`${baseUrl}drivers`)
+      .get(`${baseUrl}drivers/available`)
       .then((response) => {
         console.log("drivers",response.data)
 
@@ -150,11 +150,11 @@ export class Request extends React.Component {
         // this.headers
       )
       .then(async (response) => {
-        Alert.alert('Car Booking', 'You have successfully sent a Request ');
+        Alert.alert('Hitch N Ride', 'You have successfully sent a Request ');
         navigation.navigate('Trip');
       })
       .catch((error) => {
-        Alert.alert('Car Booking', 'Oops you have to be connected to the Internet ');
+        Alert.alert('Hitch N Ride', 'Oops you have to be connected to the Internet ');
       });
   };
 
@@ -178,12 +178,21 @@ export class Request extends React.Component {
               handleSubmit,
             }) => (
               <View style={styles.formContainer}>
+                <Text
+              muted
+              center
+              size={25}
+              style={{ paddingHorizontal: theme.SIZES.BASE }}
+            >
+              Scheduled Ride Details
+            </Text>
                 <TextInput
                   value={values.pickup_location}
                   style={styles.inputStyle}
                   onChangeText={handleChange('pickup_location')}
                   onBlur={() => setFieldTouched('pickup_location')}
                   placeholder="pickup_location"
+                  placeholderTextColor={"grey"}
                 />
                 {touched.pickup_location && errors.pickup_location && (
                   <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.pickup_location}</Text>
@@ -194,6 +203,7 @@ export class Request extends React.Component {
                   onChangeText={handleChange('destination')}
                   placeholder="destination"
                   onBlur={() => setFieldTouched('destination')}
+                  placeholderTextColor={"grey"}
                 />
                 {touched.destination && errors.destination && (
                   <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.destination}</Text>
@@ -201,7 +211,6 @@ export class Request extends React.Component {
                 <DriverDropdownList />
                 <Datepicker />
 
-                <VehicleDropdownList />
                 
                 <TextInput
                   value={values.reason}
@@ -209,12 +218,25 @@ export class Request extends React.Component {
                   onChangeText={handleChange('reason')}
                   onBlur={() => setFieldTouched('reason')}
                   placeholder="reason"
+                  placeholderTextColor={"grey"}
+
                 />
                 {touched.reason && errors.reason && (
                   <Text style={{ fontSize: 12, color: '#FF0D10' }}>{errors.reason}</Text>
                 )}
 
-                <Button color="#3740FE" title="Submit" disabled={!isValid} onPress={handleSubmit} />
+
+                <Block flex middle>
+                  <Button
+                    round
+                    color="info"
+                    style={{ marginTop: theme.SIZES.BASE }}
+                    disabled={!isValid}
+                    onPress={handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                </Block>
               </View>
             )}
           </Formik>

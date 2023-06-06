@@ -63,10 +63,9 @@ class Header extends React.Component {
       .get(`${baseUrl}passengertrips/`)
       .then((response) => {
         const items = response.data
-        console.log('gotten trips',items)
         setTripDetails(items)
         const approvedTrips=response.data.filter((x) => {
-          if (x.trip.status === 'PAID') {
+          if (x.trip.status === 'Approved') {
             return true;
           }
           return false;
@@ -80,7 +79,6 @@ class Header extends React.Component {
         });
 
         setPendingTripsDetails(pendingTrips)
-        this.getVehicles()
         this.getDrivers()
       })
       .catch((error) => {
@@ -114,10 +112,8 @@ class Header extends React.Component {
 
     const availableDrivers = [];
     axios
-      .get(`${baseUrl}drivers`)
+      .get(`${baseUrl}drivers/available`)
       .then((response) => {
-        console.log("drivers",response.data)
-
         response.data.map((x) => {
           const tempObj = {};
           tempObj.label = x.user.email;
@@ -288,6 +284,12 @@ function mapDispatchToProps(dispatch) {
       dispatch({ type: 'SET_TRIP_TO_PENDING' }),
       setTripToApproved: () =>
       dispatch({ type: 'SET_TRIP_TO_APPROVED' }),
+      setDriverDetails: (DriverDetails) => {
+        dispatch({
+          type: 'SET_DRIVER_DETAILS',
+          DriverDetails,
+        });
+      },
   };
 }
 

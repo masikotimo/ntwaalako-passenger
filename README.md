@@ -1,5 +1,5 @@
 
-# **Ntwaalako- passenger**
+# **HitchnRide- passenger**
 
 
 
@@ -7,7 +7,7 @@
 Just follow the steps below:
 
 ### Navigate to the root folder of the repo:
-$ `cd Ntwaalako- passenger`
+$ `cd HitchnRide- passenger`
 
 ### Install the required dependencies:
 $ `npm install`

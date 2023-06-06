@@ -43,7 +43,7 @@ function Home() {
         updateDetails
       )
       .then((response) => {
-        Alert.alert('Car Booking', `Trip has been ${action}ed`)
+        Alert.alert('Hitch N Ride', `Trip has been ${action}ed`)
       }
       )
       .catch((error) => {
@@ -52,17 +52,19 @@ function Home() {
   };
 
   function makePayment(tripId) {
-    axios
-      .post(`${baseUrl}passengertrips/pay-trip`, {
-        passenger_trip: tripId,
-      })
-      .then((response) => {
-        console.log("I have made a payment");
-        //call the set the method
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .post(`${baseUrl}passengertrips/pay-trip`, {
+    //     passenger_trip: tripId,
+    //   })
+    //   .then((response) => {
+    //     console.log("I have made a payment");
+    //     //call the set the method
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+      Alert.alert('Ntwalaako', 'Payment has been made')
   }
 
   function showTrip(items) {
@@ -78,17 +80,6 @@ function Home() {
                 makePayment(x.id);
               }}
               title="Make Payment"
-              color="#FEB557"
-            />
-
-            <CardButton
-              onPress={() => updateTrip(x, "Start")}
-              title="Start Trip"
-              color="#FEB557"
-            />
-            <CardButton
-              onPress={() => updateTrip(x, "end")}
-              title="End Trip"
               color="#FEB557"
             />
           </CardAction>

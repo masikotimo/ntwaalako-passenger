@@ -57,7 +57,7 @@ export const Datepicker = () => {
   };
 
   const closeMode = () => {
-    IsAvailable()? Alert.alert('Car Booking', 'Driver not available on that day.Please select another day '):setShow(false);
+    IsAvailable()? Alert.alert('Hitch N Ride', 'Driver not available on that day.Please select another day '):setShow(false);
     
     
   };

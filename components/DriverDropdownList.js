@@ -29,7 +29,9 @@ export class DriverDropdownList extends Component {
       <View style={{ zIndex: 10 }}>
         <DropDownPicker
           items={state.drivers}
-          containerStyle={{ height: 40, marginBottom: 30 }}
+          containerStyle={{ height: 40, marginBottom: 30, marginTop:20,
+           }}
+          style={{borderRadius:'30%'}}
           onChangeItem={(item) => {
             this.ondriverselection(item);
           }}

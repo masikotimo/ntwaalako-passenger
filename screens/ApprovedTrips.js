@@ -64,7 +64,7 @@ export class ApprovedTrips extends Component {
         updateDetails
       )
       .then((response) => {
-        Alert.alert('Car Booking', 'Trip has begun')
+        Alert.alert('Hitch N Ride', 'Trip has begun')
       }
       )
       .catch((error) => {
@@ -73,18 +73,19 @@ export class ApprovedTrips extends Component {
   };
 
   makePayment(tripId) {
-    const { passengerDetails } = this.props;
-    axios
-      .post(`${baseUrl}passengertrips/pay-trip`, {
-        passenger_trip: tripId,
-      })
-      .then((response) => {
-        Alert.alert('Ntwalaako', 'Payment has been made')
-        this.getItems();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // const { passengerDetails } = this.props;
+    // axios
+    //   .post(`${baseUrl}passengertrips/pay-trip`, {
+    //     passenger_trip: tripId,
+    //   })
+    //   .then((response) => {
+    //     Alert.alert('Ntwalaako', 'Payment has been made')
+    //     this.getItems();
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    Alert.alert('Ntwalaako', 'Payment has been made')
   }
 
   render() {
@@ -105,19 +106,6 @@ export class ApprovedTrips extends Component {
                 color="#FEB557"
               />
             </CardAction>
-
-            <CardAction separator={true} inColumn={false}>
-              <CardButton
-                onPress={() => this.updateTrip(x.trip, "begin")}
-                title="Begin Trip"
-                color="#FEB557"
-              />
-              <CardButton
-                onPress={() => this.updateTrip(x.trip, "end")}
-                title="End Trip"
-                color="#FEB557"
-              />
-            </CardAction>
           </Card>
         );
       });
@@ -130,10 +118,10 @@ export class ApprovedTrips extends Component {
         <Card>
           <CardTitle subtitle="Number 6" />
           <CardContent text="Clifton, Western Cape" />
-          <CardAction separator={true} inColumn={false}>
+          {/* <CardAction separator={true} inColumn={false}>
             <CardButton onPress={() => {}} title="Share" color="#FEB557" />
             <CardButton onPress={() => {}} title="Explore" color="#FEB557" />
-          </CardAction>
+          </CardAction> */}
         </Card>
       </ScrollView>
     );

@@ -1,5 +1,4 @@
-export default {
-  COLORS: {
+const COLORS = {
     DEFAULT: '#DCDCDC',
     PRIMARY: '#9C26B0',
     LABEL: '#FE2472',
@@ -20,8 +19,15 @@ export default {
     BORDER_COLOR: '#E7E7E7',
     BLOCK: '#E7E7E7',
     ICON: '#4A4A4A',
-  },
-  SIZES: {
-    BLOCK_SHADOW_RADIUS: 2,
   }
+
+const SIZES = {
+  BASE: 16,
+  FONT: 50,
+  OPACITY: 0.8,
+};
+
+export default {
+  COLORS,
+  SIZES,
 };
