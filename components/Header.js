@@ -60,7 +60,7 @@ class Header extends React.Component {
   getItems() {
     const { passengerDetails,setTripDetails,setPendingTripsDetails,setApprovedTripsDetails } = this.props;
     axios
-      .get(`${baseUrl}passengertrips/`)
+      .get(`${baseUrl}passengertrips/${passengerDetails.passenger_id}/`)
       .then((response) => {
         const items = response.data
         setTripDetails(items)

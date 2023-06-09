@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderColor: '#4e4e4e',
     padding: 12,
     marginBottom: 5,
-    borderRadius:"30%",
+    borderRadius:20,
     marginTop:20
   },
 });
@@ -135,18 +135,22 @@ export class Request extends React.Component {
 
   sendRequest = async (credentials) => {
     const { navigation, passengerDetails, date, vehicle, driver,profile } = this.props;
+    console.log("mydriver",driver)
+
+    let payload = {
+      pick_up_location: credentials.pickup_location,
+      destination: credentials.destination,
+      date,
+      reason: credentials.reason,
+      driver: driver.value,
+      passenger: passengerDetails.passenger_id,
+    }
+
+    console.log(payload)
     axios
       .post(
         `${baseUrl}passengertrips/create/`,
-        {
-          pick_up_location: credentials.pickup_location,
-          destination: credentials.destination,
-          date,
-          reason: credentials.reason,
-          driver: driver.value,
-          vehicle: vehicle.value,
-          passenger: passengerDetails.passenger_id,
-        }
+        payload
         // this.headers
       )
       .then(async (response) => {
@@ -154,6 +158,7 @@ export class Request extends React.Component {
         navigation.navigate('Trip');
       })
       .catch((error) => {
+        console.log(error)
         Alert.alert('Hitch N Ride', 'Oops you have to be connected to the Internet ');
       });
   };

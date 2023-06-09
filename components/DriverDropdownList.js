@@ -31,7 +31,6 @@ export class DriverDropdownList extends Component {
           items={state.drivers}
           containerStyle={{ height: 40, marginBottom: 30, marginTop:20,
            }}
-          style={{borderRadius:'30%'}}
           onChangeItem={(item) => {
             this.ondriverselection(item);
           }}

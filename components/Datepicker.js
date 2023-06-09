@@ -70,7 +70,7 @@ export const Datepicker = () => {
     <View>
       <View>
         <Button onPress={showDatepicker} title="select date" />
-        <Button onPress={closeMode} title="done" />
+        {/* <Button onPress={closeMode} title="done" /> */}
       </View>
       {show && (
         <DateTimePicker

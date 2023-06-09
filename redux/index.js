@@ -151,7 +151,7 @@ const initialState = {
     }
 ],
   whichTrip: true,
-  currentDate: '',
+  currentDate: new Date(),
   profile:{}
 };
 const reducer = (state = initialState, action) => {
@@ -207,11 +207,10 @@ const persistConfig = {
   blacklist: [
     'xx',
     'tripDetails',
-  'pendingTrips',
-  'approvedTrips',
-  'whichTrip'
-
-    
+    'pendingTrips',
+    'approvedTrips',
+    'whichTrip',
+    'currentDate'
 ],
   // stateReconciler: autoMergeLevel2,
 };

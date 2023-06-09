@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.8.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -24,6 +24,14 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f78f8d2a-3d5e-4493-93d3-fea4f5906904"
+      }
+    },
+    "android": {
+      "package": "com.hitchnride.passenger"
     }
   }
 }

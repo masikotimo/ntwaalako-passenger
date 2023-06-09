@@ -111,16 +111,13 @@ export class Login extends React.Component {
 
   loginUser = async (credentials) => {
     const { navigation, setPassengerDetails } = this.props;
-    console.log("olimba")
     axios
       .post(`${baseUrl}passengers/account/login/`, {
         email: credentials.email,
         password: credentials.password,
       })
       .then(async (response) => {
-        console.log("entered")
         let data=response.data
-        console.log("my data", response.data)
         setPassengerDetails(data);
         this.checkFirstTime(data.passenger_id)
         this.getProfile(data.user_id)
