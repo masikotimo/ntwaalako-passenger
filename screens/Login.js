@@ -70,19 +70,7 @@ export class Login extends React.Component {
         console.log(error);
       });
   }
-
-  checkFirstTime=async(passenger)=>{
-    try {
-      await AsyncStorage.getItem('isTokenSaved').then(async(value) => {
-        if (value == null) {
-              await this.saveTokenToDB(passenger);
-              AsyncStorage.setItem('isTokenSaved', '1' );
-          };
-      });
-    } catch (e) {
-      // saving error
-    }
-  }
+ 
 
   saveTokenToDB=async(passenger)=>{
 
@@ -119,7 +107,7 @@ export class Login extends React.Component {
       .then(async (response) => {
         let data=response.data
         setPassengerDetails(data);
-        this.checkFirstTime(data.passenger_id)
+        this.saveTokenToDB(data.passenger_id)
         this.getProfile(data.user_id)
         Alert.alert('Hitch N Ride', 'You have Logged in ');
         navigation.navigate('App');
